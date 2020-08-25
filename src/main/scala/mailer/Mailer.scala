@@ -96,6 +96,18 @@ object Mailer {
       new Mailer(createSessionBySetting(settings), autoClose)
     )
 
+  /**
+    * Create mailer instance
+    * @param settings:MailerSettings
+    * @param autoClose
+    * @return
+    */
+  def createMailerBySettings(
+      settings: MailerSettings,
+      autoClose: Boolean = false
+  ): Mailer =
+    new Mailer(createSessionBySetting(settings), autoClose)
+
   def createSessionBySetting(setting: MailerSettings): Session = {
     val protocol = setting.protocol.getOrElse("smtps")
     val auth = setting.auth.getOrElse(true)
